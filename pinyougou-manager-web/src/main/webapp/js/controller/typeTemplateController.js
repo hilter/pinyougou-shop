@@ -83,28 +83,6 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
 		);
 	}
 	
-	$scope.brandList={data:[]};//品牌列表
-    
-	//读取品牌列表
-	$scope.findBrandList=function(){
-		brandService.selectOptionList().success(
-			function(response){
-				$scope.brandList={data:response};
-			}
-		);		
-	}
-	
-	$scope.specList={data:[]};//规格列表
-	
-	//读取规格列表
-	$scope.findSpecList=function(){
-		specificationService.selectOptionList().success(
-				function(response){
-					$scope.specList={data:response};
-				}
-		);		
-	}
-	
 	//增加扩展属性行
 	$scope.addTableRow=function(){
 		$scope.entity.customAttributeItems.push({});
@@ -113,5 +91,25 @@ app.controller('typeTemplateController' ,function($scope,$controller   ,typeTemp
 	$scope.deleTableRow=function(index){
 		$scope.entity.customAttributeItems.splice( index,1);
 	}
+
+    $scope.brandList = {data:[]}
+    // 读取品牌列表
+    $scope.findBrandList=function () {
+		brandService.selectOptionList().success(
+			function (response) {
+                $scope.brandList = {data:response};
+            }
+		);
+    }
+
+    $scope.specList = {data:[]}
+    // 读取规格列表
+    $scope.findSpecList=function () {
+       specificationService.selectOptionList().success(
+            function (response) {
+                $scope.specList = {data:response};
+            }
+        );
+    }
 	
 });	
