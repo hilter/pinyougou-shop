@@ -148,4 +148,13 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService,up
         );
     });
 
+    //三级分类选择后  读取模板ID
+    $scope.$watch('entity.goods.category3Id', function(newValue, oldValue) {
+        itemCatService.findOne(newValue).success(
+            function(response){
+                $scope.entity.goods.typeTemplateId=response.typeId; //更新模板ID
+            }
+        );
+    });
+
 });	
