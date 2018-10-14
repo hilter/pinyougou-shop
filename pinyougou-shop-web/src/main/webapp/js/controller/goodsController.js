@@ -128,4 +128,24 @@ app.controller('goodsController' ,function($scope,$controller   ,goodsService,up
         );
     }
 
+    // 读取二级分类
+    $scope.$watch('entity.goods.category1Id', function(newValue, oldValue) {
+        //根据选择的值，查询二级分类
+        itemCatService.findByParentId(newValue).success(
+            function(response){
+                $scope.itemCat2List=response;
+            }
+        );
+    });
+
+    // 读取三级分类
+    $scope.$watch('entity.goods.category2Id', function(newValue, oldValue) {
+        //根据选择的值，查询二级分类
+        itemCatService.findByParentId(newValue).success(
+            function(response){
+                $scope.itemCat3List=response;
+            }
+        );
+    });
+
 });	
